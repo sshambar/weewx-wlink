@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head><title>Davis | WeatherLink - My Weather Page</title>
+
+<!-- Force IE8 into compatibility mode so our shadows display correctly -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+<meta http-equiv="refresh" content="300">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="Keywords" content="Davis WeatherLinkIP WeatherLink">
+<meta name="Author" content="Andy Schmidt, Jeremaih Jeffress">
+<meta name="Robots" content="All">
+<meta name="Content-Language" content="English">
+<meta name="Copyright" content="&copy; 2014 Davis Instruments">
+
+<link type="image/x-icon" href="/favicon.ico" rel="Shortcut Icon">
+<link type="text/css" href="/lib/css/wl2.css" rel="stylesheet">
+<link type="text/css" href="/lib/css/colorbox.css" rel="stylesheet">
+<link type="text/css" href="/lib/css/jquery-ui-1.8.4.custom.css" rel="stylesheet">
+
+<script type="text/javascript" src="/lib/js/library/jquery-1.7.1.min.js?ver=20140815"></script>
+<script type="text/javascript" src="/lib/js/library/jquery-ui-1.8.17.custom.min.js?ver=20140815"></script>
+<script type="text/javascript" src="/lib/js/library/jquery.colorbox.js"></script>
+<script type="text/javascript" src="/lib/js/library/jquery.validate.min.js"></script>
+
+<script type="text/javascript" src="/lib/js/library/lodash.2.4.1.min.js?ver=20140815"></script>
+
+<script type="text/javascript" src="/lib/js/classes/Lib.js"></script>
+<script type="text/javascript" src="/lib/js/classes/FormValidator.js"></script>
+<script type="text/javascript" src="/lib/js/classes/Dialog.js"></script>
+<script type="text/javascript" src="/lib/js/classes/cAjaxHandler.js"></script>
+<script type="text/javascript" src="/lib/js/classes/cAjaxQueue.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+  // This will fade out the message box if there is one.
+  //LIB.fadeOutMessageBox();
+
+  //Buttons set with attributes data-link=1 will make the button perform as a link and will look for
+  //the attribruge data-href for the url location to link to.
+  $('body').on('click', 'button[data-link=1]', function(){
+  window.location.href = $(this).attr('data-href');
+  });
+  });
+</script>
+<script type="text/javascript">
+
+//--------------------------------------
+function changeUnits() {
+var oForm = document.forms['frmUnits'];
+var iType;
+
+iType = oForm.selUnits.options[oForm.selUnits.selectedIndex].value;
+document.location.href = "/user/prodata2/index.php?view=main&headers=0&type=" + iType;
+return;
+}
+
+
+//--------------------------------------
+// Refresh the page
+//--------------------------------------
+function guiResize() {
+document.location.href = "/user/prodata2/index.php?view=main&headers=0";
+}
+
+var guiResizeTimer= null;// Timer for smoother GUI resizing
+var isOpera= window.opera;// Are we running Opera?
+
+if (isOpera) {
+
+//--------------------------------------
+// Hook into the window onResize event and call
+// our guiResize() function using a short timeout
+//--------------------------------------
+window.onresize = function() {
+if (guiResizeTimer) { clearTimeout(guiResizeTimer); }
+guiResizeTimer = setTimeout(guiResize, 100);
+};
+}
+
+
+</script>
+
+</head>
+<body>
+
+
+<br>
+
+
+
+<!-- START: PAGE CONTENT -->
+
+
+<table align="center" width="760" class="content" border="0" cellspacing="0" cellpadding="0" summary="">
+<tr>
+  <td valign="top" align="center">
+
+    <table align="left" width="100%" border="0" cellspacing="0" cellpadding="0" summary="">
+      <tr>
+        <td align="left" valign="top">
+
+          <!-- START: MAIN WEATHER DISPLAY -->
+          <table width="760" cellpadding="0" cellspacing="0" border="0" class="glamor_table" summary="">
+            <tr>
+              <td style="height: 85px; padding-left: 40px;" colspan="3"><a href="http://www.weatherlink.com/" class="notext" title="WeatherLink Network"><img src="/images/spacer.gif" style="width: 430px; height: 40px;"></a></td>
+                </tr>
+              <tr>
+                <td class="station_name" style="padding-left: 40px;" colspan="3"><div style="position: relative; text-align: left;"><span style="position: relative;"><span class="shadowTextBlack">&nbsp; Ely, Cambs - Prodata Weather Systems</span><span class="shadowTextWhite">&nbsp; Ely, Cambs - Prodata Weather Systems</span></span></div></td>
+                </tr>
+              <tr>
+                <td class="glamor_temp" rowspan="2" style="padding-left: 40px;"><div style="position: relative; text-align: center; width: 200px;"><span style="position: relative;"><span class="shadowTextBlack">12<span class="degrees">&deg;</span></span><span class="shadowTextWhite">12<span class="degrees">&deg;</span></span></span></div></td>
+                <td class="glamor_datatemp" nowrap style="padding-top: 20px;"><div style="position: relative; text-align: left;"><span style="position: relative;"><span class="shadowTextBlack">HIGH&nbsp;13<span class="degrees">&deg;</span>C</span><span class="shadowTextWhite">HIGH&nbsp;13<span class="degrees">&deg;</span>C</span></span></div></td>
+                <td class="glamor_detailtemp" nowrap style="padding-top: 20px;">at&nbsp;00:35</td>
+                </tr>
+              <tr>
+                <td class="glamor_datatemp" nowrap ><div style="position: relative; text-align: left;"><span style="position: relative;"><span class="shadowTextBlack">LOW&nbsp;12<span class="degrees">&deg;</span>C</span><span class="shadowTextWhite">LOW&nbsp;12<span class="degrees">&deg;</span>C</span></span></div></td>
+                <td class="glamor_detailtemp" nowrap>at&nbsp;02:44</td>
+                </tr>
+              <tr>
+                <td class="glamor_variable" style="padding-left: 40px;">Wind</td>
+                <td class="glamor_datatemp" nowrap><div style="position: relative; text-align: left;"><span style="position: relative;"><span class="shadowTextBlack">W&nbsp;6<span class="threequarter">&nbsp;km/h</span></span><span class="shadowTextWhite">W&nbsp;6<span class="threequarter">&nbsp;km/h</span></span></span></div></td>
+                <td class="glamor_detailtemp" nowrap>High Gust&nbsp;13<span class="threequarter">&nbsp;km/h</span>&nbsp;at&nbsp;01:33</td>
+                </tr>
+              <tr>
+                <td class="glamor_variable" style="padding-left: 40px;">Humidity</td>
+                <td class="glamor_datatemp" nowrap><div style="position: relative; text-align: left;"><span style="position: relative;"><span class="shadowTextBlack">93<span class="threequarter">%</span></span><span class="shadowTextWhite">93<span class="threequarter">%</span></span></span></div></td>
+                <td class="glamor_detailtemp" nowrap>Feels Like&nbsp;12<span class="degrees">&deg;</span>C</td>
+                </tr>
+              <tr>
+                <td class="glamor_variable" style="padding-left: 40px;">Rain</td>
+                <td class="glamor_datatemp" nowrap><div style="position: relative; text-align: left;"><span style="position: relative;"><span class="shadowTextBlack">0.0mm</span><span class="shadowTextWhite">0.0mm</span></span></div></td>
+                <td class="glamor_detailtemp" nowrap>Seasonal Total&nbsp;448.8mm</td>
+                </tr>
+              <tr>
+                <td class="glamor_variable" style="padding-left: 40px;">Barometer</td>
+                <td class="glamor_datatemp" nowrap><div style="position: relative; text-align: left;"><span style="position: relative;"><span class="shadowTextBlack">1019.5mb</span><span class="shadowTextWhite">1019.5mb</span></span></div></td>
+                <td class="glamor_detailtemp" nowrap>Steady</td>
+                </tr>
+              <tr>
+                <td colspan="3" class="glamor_timestamp" style="padding-left: 40px;">
+                  <div style="float: left;" >
+                    Current Conditions as of 2:47 Saturday, August 16, 2014<Br>
+                      <div style="font-size:10px">Vantage Pro2 data via WeatherLinkIP</div>
+                      </div>
+                    <div style="float: right;"><a href="http://www.davisnet.com/" target="_blank" class="weather"><img src="/images/spacer.gif" width="170" height="30" border="0"></a></div>
+                      <br clear="all">
+
+                        </td>
+                      </tr>
+                    </table>
+                  <!-- END: MAIN WEATHER DISPLAY -->
+
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+</tr>
+</table>
+<br>
+
+<!-- END: PAGE CONTENT -->
+
+
+</body>
+</html>

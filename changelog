@@ -1,0 +1,44 @@
+0.14 29jan2018
+* protect against non-float values when parsing for floats
+
+0.13 03dec2017
+* let StdWXCalculate enforce "wind dir is None when wind speed is zero" policy
+
+0.12 02dec2017
+* deal with different rain bucket sizes
+
+0.11 27sep2016
+* provide more feedback when downloads fail
+
+0.10 10feb2016
+* fixed configuration for automated installs
+
+0.9 22jan2016
+* provide feedback about which HTML format is expected
+* fixed parsing/conversion of windspeed
+* properly parse fractional values for windspeed
+
+0.8 21jan2016
+* support both older and newer html structures, just in case
+
+0.7 19jan2016
+* deal with davis' change to html structure
+
+0.6 15nov2015
+* added option to cache the raw download data for debugging/diagnostics
+
+0.5 27oct2015
+* include DRIVER_NAME hint for weewx 3.2
+
+0.4 26jan2015
+* added option to specify the archive interval
+
+0.3 06dec2014
+* update for weewx v3
+
+0.2
+* fixed VERSION tag
+
+0.1
+* initial implementation
+	
